@@ -1,0 +1,73 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.app {
+  margin: auto;
+}
+
+.active {
+  background-color: green;
+}
+
+div.quiz {
+  font-size: x-large;
+  position: fixed;
+  bottom: 40px;
+  margin: 0 auto;
+  left: 0px;
+  right: 0px;
+  float: clear;
+}
+
+div.flag-container {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4vw;
+  flex: auto;
+  margin: auto;
+  max-width: 80vw;
+  max-height: 70vh;
+  /* border: 2px solid green; */
+}
+
+div.flag {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid red; */
+  width: 40%;
+  height: 40%;
+}
+
+button.btn-flag {
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  background: none;
+  border: none;
+  -webkit-box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
+  -moz-box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
+  box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
+}
+
+button.btn-flag :hover {
+  scale: 110%;
+}
+
+img {
+  max-width: 20vw;
+  max-height: 30vh;
+  margin: auto;
+
+}
+
+div.flag-name {
+  float: none;
+  height: 50px;
+}
