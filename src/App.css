@@ -36,7 +36,7 @@ div.flag-container {
   flex: auto;
   margin: auto;
   max-width: 80vw;
-  max-height: 70vh;
+  max-height: 60vh;
   /* border: 2px solid green; */
 }
 
@@ -69,7 +69,6 @@ img {
   max-width: 20vw;
   max-height: 30vh;
   margin: auto;
-
 }
 
 div.flag-name {
