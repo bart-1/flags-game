@@ -14,7 +14,12 @@
 }
 
 div.quiz {
-  font-size: x-large;
+  color: white;
+  display: flex;
+  justify-content: center;
+  gap: 2vw;
+  font-size: large;
+  width: 100%;
   position: fixed;
   bottom: 40px;
   margin: 0 auto;
@@ -68,6 +73,7 @@ img {
 }
 
 div.flag-name {
+  color: white;
   float: none;
   height: 50px;
 }

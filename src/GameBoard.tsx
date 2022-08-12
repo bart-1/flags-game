@@ -1,4 +1,5 @@
 import react, { ReactNode, useEffect, useState } from "react";
+import useFetchStore from "./FetchStore";
 import Flag from "./Flag";
 import Quiz from "./Quiz";
 import useStore from "./Store";
@@ -22,7 +23,7 @@ function shuffle(a: Array<number>) {
 }
 
 const GameBoard = () => {
-  const flags = useStore((state) => state.flagsArray);
+  const flags = useFetchStore((state) => state.flagsArray);
   const randomInteger = useStore((state) => state.randomInteger);
   const quizFlagNumber = useStore((state) => state.quizFlag);
   const clickedFlag = useStore((state) => state.setClickedFlag);
@@ -35,8 +36,9 @@ const GameBoard = () => {
         randomInteger(1, flags.length),
       ];
     }
-      randomFlagsNumbers = [...randomFlagsNumbers, quizFlagNumber];
-    const newArr = shuffle(randomFlagsNumbers);
+    randomFlagsNumbers = [...randomFlagsNumbers, quizFlagNumber];
+  const newArr = shuffle(randomFlagsNumbers);
+    if(newArr.length === 4){
     const toRender = newArr.map((number) => (
       <div key={flags[number].id + randomInteger(1, 999999)} className="flag">
         <Flag flag={flags[number]} showId={(id) => clickedFlag(id)} />
@@ -45,15 +47,12 @@ const GameBoard = () => {
 
     return toRender;
   };
-
-  console.log(quizFlagNumber);
+}
 
   return (
     <>
       <div className="flag-container">{flagGenerator(3)}</div>
-      <div className="quiz">
-        <Quiz rand={quizFlagNumber} />
-      </div>
+    
     </>
   );
 };

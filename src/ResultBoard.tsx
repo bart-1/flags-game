@@ -5,7 +5,7 @@ import useStore from "./Store";
 // : ;
 // }
 
-const ReasultBoard = () => {
+const ResultBoard = () => {
   const clickedFlag = useStore((state) => state.clickedFlag);
   const quizFlag = useStore((state) => state.quizFlag);
   const increaseWinNumber = useStore((state) => state.increaseWinNumber);
@@ -31,4 +31,4 @@ const ReasultBoard = () => {
     </>
   );
 };
-export default ReasultBoard;
+export default ResultBoard;

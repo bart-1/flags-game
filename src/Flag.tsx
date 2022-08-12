@@ -1,5 +1,6 @@
 import react, { useState } from "react";
-import useStore, { FlagType } from "./Store";
+import { FlagType } from "./FetchStore";
+import useStore from "./Store";
 
 interface FlagProps {
   flag: FlagType;

@@ -1,5 +1,7 @@
 import react, { ReactNode, useEffect, useState } from "react";
-import useStore, { FlagType } from "./Store";
+import useFetchStore from "./FetchStore";
+import ResultBoard from "./ResultBoard";
+import useStore from "./Store";
 
 interface QuizProps {
     // quizOutput: (flag: FlagType) => void;
@@ -8,7 +10,7 @@ interface QuizProps {
 
 const Quiz = ({ rand }: QuizProps) => {
 //   const randomInteger = useStore((state) => state.randomInteger);
-  const flags = useStore((state) => state.flagsArray);
+  const flags = useFetchStore((state) => state.flagsArray);
   const lang = useStore((state) => state.lang);
 
 //   const [rand, setRand] = useState(0);
@@ -31,8 +33,8 @@ const Quiz = ({ rand }: QuizProps) => {
           {(lang === "pl" && flags[rand].pl) ||
             (lang === "en" && flags[rand].en)}{" "}
         </h1>
+        <ResultBoard />
       </div>
-      
     </>
   );
 };
