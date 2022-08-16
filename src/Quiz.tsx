@@ -12,6 +12,17 @@ const Quiz = ({ rand }: QuizProps) => {
   const flags = useFetchStore((state) => state.flagsArray);
   const lang = useStore((state) => state.lang);
 
+  const pluralVerb = ["ae","ag", "ax", "ba", "bm", "bq", "bs", "cc", "ck", "cn","cz", "de", "fk", "fo", "hm", "in", "hu", "km", "ky", "mh", "mp", "mv", "ph", "sb", "sc", "sh", "sj", "st", "tc", "tf", "tt", "um", "vc", "vg", "vi", "wf"];
+
+  const isPluralVerb = () => {
+    const test = pluralVerb.filter(el => el === flags[rand].prefix)
+    console.log(test);
+    if (test.length > 0)
+      return true
+    else
+      return false
+  }
+  
   return (
     <>
       <div className="quiz-container">
@@ -19,7 +30,7 @@ const Quiz = ({ rand }: QuizProps) => {
           <span>
             {(lang === "pl" && (
               <>
-                <span>Wskaż jaką flagę ma </span>
+                <span>Wskaż jaką flagę {isPluralVerb() ? "mają" : "ma" } </span>
                 <span className="quiz-flag-name">{flags[rand].pl}</span>
               </>
             )) ||
