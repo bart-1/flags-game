@@ -4,35 +4,33 @@ import ResultBoard from "./ResultBoard";
 import useStore from "./Store";
 
 interface QuizProps {
-    // quizOutput: (flag: FlagType) => void;
-    rand: number
+  // quizOutput: (flag: FlagType) => void;
+  rand: number;
 }
 
 const Quiz = ({ rand }: QuizProps) => {
-//   const randomInteger = useStore((state) => state.randomInteger);
   const flags = useFetchStore((state) => state.flagsArray);
   const lang = useStore((state) => state.lang);
 
-//   const [rand, setRand] = useState(0);
-
-//   useEffect(() => {
-//     setRand(randomInteger(0, flags.length));
-//   }, []);
-
-//   useEffect(() => {
-//     quizOutput(flags[rand]);
-//   }, [rand]);
-
- 
-
   return (
     <>
-      <div className="quiz">
-        <h1>
-          {" "}
-          {(lang === "pl" && flags[rand].pl) ||
-            (lang === "en" && flags[rand].en)}{" "}
-        </h1>
+      <div className="quiz-container">
+        <div className="quiz">
+          <span>
+            {(lang === "pl" && (
+              <>
+                <span>Wskaż jaką flagę ma </span>
+                <span className="quiz-flag-name">{flags[rand].pl}</span>
+              </>
+            )) ||
+              (lang === "en" && (
+                <>
+                  <span>Show flag of </span>
+                  <span className="quiz-flag-name">{flags[rand].en}</span>
+                </>
+              ))}
+          </span>
+        </div>
         <ResultBoard />
       </div>
     </>

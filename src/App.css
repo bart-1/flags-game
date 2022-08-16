@@ -1,59 +1,52 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
 .app {
   margin: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .active {
   background-color: green;
 }
 
-div.quiz {
-  color: white;
+.lang-nav-container {
   display: flex;
   justify-content: center;
-  gap: 2vw;
-  font-size: large;
-  width: 100%;
-  position: fixed;
-  bottom: 40px;
-  margin: 0 auto;
-  left: 0px;
-  right: 0px;
-  float: clear;
+  margin: auto;
+  height: 5vh;
+  align-items: center;
+  background-color: rgb(23, 25, 25);
+
+  /* border: 2px solid red; */
 }
 
 div.flag-container {
-  justify-content: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 4vw;
-  flex: auto;
+  max-width: 100%;
+  height: 75vh;
   margin: auto;
-  max-width: 80vw;
-  max-height: 60vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  row-gap: 5vh;
+  column-gap: 3vw;
   /* border: 2px solid green; */
 }
 
-div.flag {
+/* div.flag {
   align-self: center;
-  display: flex;
-  flex-direction: column;
-  /* border: 2px solid red; */
-  width: 40%;
-  height: 40%;
-}
+} */
 
 button.btn-flag {
-  margin: auto;
-  width: fit-content;
-  height: fit-content;
-  display: flex;
+
+  width: 15vw;
+  min-width: 15vh;
   background: none;
   border: none;
   -webkit-box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
@@ -63,16 +56,160 @@ button.btn-flag {
 
 button.btn-flag :hover {
   scale: 110%;
-}
-
-img {
-  max-width: 20vw;
-  max-height: 25vh;
-  margin: auto;
+  -webkit-box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
+  -moz-box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
+  box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
 }
 
 div.flag-name {
   color: white;
   float: none;
-  height: 50px;
+  width: 100%;
+  height: 20px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+div.quiz-container {
+  padding: 10px;
+  max-width: 100%;
+  height: 15vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: rgb(23, 25, 25);
+  color: white;
+  font-size: large;
+  /* border: 2px solid yellow; */
+}
+div.quiz {
+  width: 80%;
+  align-self: center;
+  /* border: 2px solid pink; */
+}
+
+div.quiz > span {
+  font-size: xx-large;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+div.quiz >span >span.quiz-flag-name {
+  color: yellow;
+}
+
+div.results {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 20%;
+  align-self: center;
+  gap: 10px;
+  /* border: 2px solid blue; */
+}
+div.results > span {
+  font-size: x-large;
+  font-weight: 400;
+}
+
+span.red {
+  color: red;
+}
+
+span.green {
+  color: green;
+}
+
+div.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh;
+  background-color: black;
+}
+div.footer > span {
+  color: gray;
+}
+
+@media (max-width: 1000px) {
+div.flag-container {
+  flex-direction: column;
+  flex-shrink: 0;
+  row-gap: 2vh;
+  column-gap: 1vw;
+  
+} 
+/* div.single-flag-container {
+}  */
+div.single-flag-container {
+  flex: none;
+}
+
+div.quiz >span {
+  font-size: x-large;
+}
+div.results > span {
+  font-size: large;
+}
+}
+
+@media (max-width: 500px) {
+  div.flag-name {
+  
+  font-size: x-small;
+}
+  
+  div.quiz-container {
+    height: 12vh;
+  }
+  div.footer {
+    height: 8vh;
+    font-size: smaller;
+  }
+
+div.quiz >span {
+  font-size: large;
+}
+div.results > span {
+  font-size: medium;
+  line-height: 1;
+}
+}
+@media (max-width: 370px) {
+  div.flag-container {
+ flex-wrap: nowrap;
+  row-gap: 1vh;
+  column-gap: 1vw;
+  
+} 
+  button.flag {
+     min-width: 8vh;
+  }
+
+  div.quiz-container {
+    height: 12vh;
+  }
+  div.footer {
+    height: 8vh;
+    font-size: x-small;
+  }
+
+div.quiz >span {
+  font-size: large;
+}
+div.results > span {
+  font-size: small;
+}
+ div.quiz-container {
+    height: 10vh;
+  }
+  div.footer {
+    height: 5vh;
+    font-size: x-small;
+  }
+
 }

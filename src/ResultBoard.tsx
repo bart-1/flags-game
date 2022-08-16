@@ -15,19 +15,23 @@ const ResultBoard = () => {
   const clicksCounter = useStore((state) => state.clicksCounter);
   const reset = useStore((state) => state.resetResults);
 
+  const lang = useStore(state => state.lang);
+
   useEffect(() => {
     reset();
   }, []);
 
   useEffect(() => {
-    if (clickedFlag === quizFlag || clicksCounter > 0) {
+    if (clickedFlag === quizFlag && clicksCounter >0) {
       increaseWinNumber();
-    } else increaseLossNumber();
+    } else if (clickedFlag !== quizFlag && clicksCounter>0)increaseLossNumber();
   }, [clickedFlag]);
   return (
     <>
-      <h1>TAK: {win} </h1>
-      <h1>NIE: {loss} </h1>
+      <div className="results">
+        <span className="green">{lang === "pl" && 'Dobrze:' || lang === "en" && 'Good:'} {win} </span>
+        <span className="red">{lang === "pl" && 'Źle:' || lang === "en" && 'Wrong:'} {loss} </span>
+      </div>
     </>
   );
 };

@@ -7,19 +7,21 @@ const LangNav = () => {
     const lang = useStore((state) => state.lang)
 
   return (
-    <>
-      <div className="lang-nav">
-        <button
-          className={lang === "pl" ? "active" : ""}
-          onClick={() => setLang("pl")}>
-          Polski
-        </button>
-        <button
-          className={lang === "en" ? "active" : ""}
-          onClick={() => setLang("en")}>
-          English
-        </button>
-      </div>
+    <><div className="lang-nav-container">
+      
+        <div className="lang-nav-btn">
+          <button
+            className={lang === "pl" ? "active" : ""}
+            onClick={() => setLang("pl")}>
+            Polski
+          </button>
+          <button
+            className={lang === "en" ? "active" : ""}
+            onClick={() => setLang("en")}>
+            English
+          </button>
+        </div>
+    </div>
     </>
   );
 };
