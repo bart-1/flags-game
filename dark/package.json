@@ -1,0 +1,21 @@
+{
+  "name": "dark",
+  "displayName": "dev-1_dark",
+  "description": "dark theme",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.71.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "dev-1_dark_theme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/dev-1_dark_theme-color-theme.json"
+      }
+    ]
+  }
+}

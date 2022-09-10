@@ -1,54 +1,35 @@
-import { useEffect, useState } from "react";
-import "./App.css";
+import { useEffect } from "react";
 import useFetchStore from "./FetchStore";
-import Footer from "./Footer";
-import GameBoard from "./GameBoard";
-import LangNav from "./LangNav";
-import Quiz from "./Quiz";
-import ResultBoard from "./ResultBoard";
+import GameSetup from "./GameSetup";
+import Loading from "./Loading";
+import StartMenu from "./StartMenu";
 import useStore from "./Store";
+import LangNav from "./LangNav";
+import Footer from "./Footer";
+import "./App.css";
 
-const urlJson = "codesOfFlags.json";
+const URL_JSON = "codesOfFlagsTest.json";
 
 function App() {
+  const start = useStore((state) => state.start);
+  const setStart = useStore((state) => state.setStart);
   const fetchData = useFetchStore((state) => state.fetch);
-  const flags = useFetchStore((state) => state.flagsArray);
-
-  const flagsLoading = useFetchStore((state) => state.flagsLoading);
-  const setFlagsLoading = useFetchStore((state) => state.setFlagsLoading);
-  const randomInteger = useStore((state) => state.randomInteger);
-  const setQuizFlagNumber = useStore((state) => state.setQuizFlag);
-  const quizFlagNumber = useStore((state) => state.quizFlag);
-
-  const win = useStore((state) => state.winNumber);
-  const [renderApp, setRenderApp] = useState(false);
+  const flagsLoaded = useFetchStore(
+    (state) => state.flagsLoaded
+  );
 
   useEffect(() => {
-    try {
-      fetchData(urlJson);
-    } catch {
-      setFlagsLoading(true);
-    }
+    fetchData(URL_JSON);
   }, []);
 
-  useEffect(() => {
-    if (!flagsLoading) setQuizFlagNumber(randomInteger(0, flags.length));
-  }, [flagsLoading]);
-
-  useEffect(() => {
-    setRenderApp((prevState) => !prevState);
-    setQuizFlagNumber(randomInteger(0, flags.length));
-  }, [win]);
-
-  if (flagsLoading) return <span>Loading data...</span>;
-
-  if (!flags) return <span>No data... sorry</span>;
+  if (!flagsLoaded) return <Loading />;
 
   return (
     <div className="App">
       <LangNav />
-      <GameBoard />
-      <Quiz rand={quizFlagNumber} />
+
+      {!start && <StartMenu start={() => setStart(true)} />}
+      {start && <GameSetup />}
       <Footer />
     </div>
   );

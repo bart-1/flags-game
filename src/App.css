@@ -10,13 +10,51 @@
   height: 100%;
 }
 
+.loading-icon {
+  color: white;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+}
+
+div.loading-icon-container {
+  display: flex;
+  width: 10vh;
+  margin: 20% auto;
+  align-content: center;
+}
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 .active {
   background-color: green;
 }
 
 .lang-nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
+  font-size: small;
+  gap: 1vw;
   margin: auto;
   height: 5vh;
   align-items: center;
@@ -44,7 +82,6 @@ div.flag-container {
 } */
 
 button.btn-flag {
-
   width: 15vw;
   min-width: 15vh;
   background: none;
@@ -98,7 +135,7 @@ div.quiz > span {
   line-height: 1.5;
 }
 
-div.quiz >span >span.quiz-flag-name {
+div.quiz > span > span.quiz-flag-name {
   color: yellow;
 }
 
@@ -123,8 +160,15 @@ span.red {
 span.green {
   color: green;
 }
+span.blue {
+  color: lightblue;
+}
 
 div.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,33 +180,31 @@ div.footer > span {
 }
 
 @media (max-width: 1000px) {
-div.flag-container {
-  flex-direction: column;
-  flex-shrink: 0;
-  row-gap: 2vh;
-  column-gap: 1vw;
-  
-} 
-/* div.single-flag-container {
+  div.flag-container {
+    flex-direction: column;
+    flex-shrink: 0;
+    row-gap: 2vh;
+    column-gap: 1vw;
+  }
+  /* div.single-flag-container {
 }  */
-div.single-flag-container {
-  flex: none;
-}
+  div.single-flag-container {
+    flex: none;
+  }
 
-div.quiz >span {
-  font-size: x-large;
-}
-div.results > span {
-  font-size: large;
-}
+  div.quiz > span {
+    font-size: x-large;
+  }
+  div.results > span {
+    font-size: large;
+  }
 }
 
 @media (max-width: 500px) {
   div.flag-name {
-  
-  font-size: x-small;
-}
-  
+    font-size: x-small;
+  }
+
   div.quiz-container {
     height: 12vh;
   }
@@ -171,23 +213,22 @@ div.results > span {
     font-size: smaller;
   }
 
-div.quiz >span {
-  font-size: large;
-}
-div.results > span {
-  font-size: medium;
-  line-height: 1;
-}
+  div.quiz > span {
+    font-size: large;
+  }
+  div.results > span {
+    font-size: medium;
+    line-height: 1;
+  }
 }
 @media (max-width: 370px) {
   div.flag-container {
- flex-wrap: nowrap;
-  row-gap: 1vh;
-  column-gap: 1vw;
-  
-} 
+    flex-wrap: nowrap;
+    row-gap: 1vh;
+    column-gap: 1vw;
+  }
   button.flag {
-     min-width: 8vh;
+    min-width: 8vh;
   }
 
   div.quiz-container {
@@ -198,18 +239,33 @@ div.results > span {
     font-size: x-small;
   }
 
-div.quiz >span {
-  font-size: large;
-}
-div.results > span {
-  font-size: small;
-}
- div.quiz-container {
+  div.quiz > span {
+    font-size: large;
+  }
+  div.results > span {
+    font-size: small;
+  }
+  div.quiz-container {
     height: 10vh;
   }
   div.footer {
     height: 5vh;
     font-size: x-small;
   }
+}
 
+div.winner {
+  display: flex;
+  height: 80vh;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+}
+
+div.start-container {
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

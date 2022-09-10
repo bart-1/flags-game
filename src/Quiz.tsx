@@ -1,14 +1,12 @@
-import react, { ReactNode, useEffect, useState } from "react";
-import useFetchStore from "./FetchStore";
+import react from "react";
+import useFetchStore, { FlagType } from "./FetchStore";
+import useFlagsDeckStore from "./FlagsDeckStore";
 import ResultBoard from "./ResultBoard";
 import useStore from "./Store";
 
-interface QuizProps {
-  // quizOutput: (flag: FlagType) => void;
-  rand: number;
-}
+const Quiz = () => {
+  const quizFlagNumber = useFlagsDeckStore((state) => state.quizFlag);
 
-const Quiz = ({ rand }: QuizProps) => {
   const flags = useFetchStore((state) => state.flagsArray);
   const lang = useStore((state) => state.lang);
 
@@ -52,7 +50,7 @@ const Quiz = ({ rand }: QuizProps) => {
   ];
 
   const isPluralVerb = () => {
-    const test = pluralVerb.filter((el) => el === flags[rand].prefix);
+    const test = pluralVerb.filter((el) => el === flags[quizFlagNumber].prefix);
     if (test.length > 0) return true;
     else return false;
   };
@@ -65,13 +63,17 @@ const Quiz = ({ rand }: QuizProps) => {
             {(lang === "pl" && (
               <>
                 <span>Wskaż jaką flagę {isPluralVerb() ? "mają" : "ma"} </span>
-                <span className="quiz-flag-name">{flags[rand].pl}</span>
+                <span className="quiz-flag-name">
+                  {flags[quizFlagNumber].pl}
+                </span>
               </>
             )) ||
               (lang === "en" && (
                 <>
-                  <span>Show flag of </span>
-                  <span className="quiz-flag-name">{flags[rand].en}</span>
+                  <span>Point to the flag of </span>
+                  <span className="quiz-flag-name">
+                    {flags[quizFlagNumber].en}
+                  </span>
                 </>
               ))}
           </span>

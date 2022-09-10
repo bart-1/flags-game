@@ -1,15 +1,9 @@
 import create from "zustand";
+import useFlagsDeckStore from "./FlagsDeckStore";
 
 export type FlagType = { id: number; prefix: string; pl: string; en: string };
 
-interface FetchStore {
-  flagsArray: FlagType[];
-  fetch: (url: string) => void;
-  flagsLoading: boolean;
-  setFlagsLoading: (bool: boolean) => void;
-}
-
-const prepareFlagsArray = (objectOne: object, objectTwo: object) => {
+export const prepareFlagsArray = (objectOne: object, objectTwo: object) => {
   let newObject: FlagType[] = [];
 
   Object.entries(objectOne).map((key, index) => {
@@ -27,20 +21,62 @@ const prepareFlagsArray = (objectOne: object, objectTwo: object) => {
   return newObject;
 };
 
+export const objectArrayToNumbersArray = <T>(objectsArray: T[]): number[] => {
+  let newArr: number[] = [];
+  for (let i = 0; i < objectsArray.length; i++) {
+    newArr = [...newArr, i];
+  }
+
+  return newArr;
+};
+
+interface FetchStore {
+  flagsArray: FlagType[];
+  flagsIDArray: number[];
+  flagsIDArrayIsReady: boolean;
+  setFlagsIDArrayIsReady: (bool: boolean) => void;
+  fetch: (url: string) => void;
+  flagsLoaded: boolean;
+  setFlagsLoading: (bool: boolean) => void;
+  rebuildFlagsIDDeck: () => void;
+}
+
 const useFetchStore = create<FetchStore>((set) => ({
   flagsArray: [],
-  flagsLoading: true,
-  setFlagsLoading: (bool) => set({ flagsLoading: bool }),
+  flagsIDArray: [],
+  flagsIDArrayIsReady: false,
+  flagsLoaded: false,
+
+  setFlagsIDArrayIsReady: (bool) => set({ flagsIDArrayIsReady: bool }),
+  setFlagsLoading: (bool) => set({ flagsLoaded: bool }),
+  rebuildFlagsIDDeck: () => {
+    const newArr = useFetchStore
+      .getState()
+      .flagsIDArray.filter(
+        (el) => el !== useFlagsDeckStore.getState().quizFlag
+      );
+    set({ flagsIDArray: newArr, flagsIDArrayIsReady: true });
+  },
 
   fetch: async (url) => {
-    set({ flagsLoading: true });
-    const response = await fetch(url)
+    set({ flagsLoaded: false });
+
+    fetch(url)
       .then((response) => response.json())
-      .then((response) =>
-        set({ flagsArray: prepareFlagsArray(response.pl, response.en) })
+      .then((data) => prepareFlagsArray(data.pl, data.en))
+      .then((data) => {
+        set({
+          flagsArray: data,
+        });
+        return objectArrayToNumbersArray(data);
+      })
+      .then((data) =>
+        set({
+          flagsIDArray: data,
+          flagsIDArrayIsReady: true,
+        })
       )
-      .then((response) => set({ flagsLoading: false }))
-      .catch((err) => console.log(err));
+      .then(() => set({ flagsLoaded: true }));
   },
 }));
 
