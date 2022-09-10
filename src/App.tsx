@@ -8,7 +8,7 @@ import LangNav from "./LangNav";
 import Footer from "./Footer";
 import "./App.css";
 
-const URL_JSON = "codesOfFlagsTest.json";
+const URL_JSON = "codesOfFlags.json";
 
 function App() {
   const start = useStore((state) => state.start);
