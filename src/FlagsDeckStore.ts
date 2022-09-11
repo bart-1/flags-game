@@ -1,5 +1,5 @@
 import create from "zustand";
-import useFetchStore, { FlagType } from "./FetchStore";
+import useFetchStore from "./FetchStore";
 
 export const randomIntegerFromScope = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -17,7 +17,7 @@ export function shuffle<T>(a: T[]) {
   return a;
 }
 
-const selectRandElementsFromArray = <T>(
+export const selectRandElementsFromArray = <T>(
   numberOfElements: number,
   array: T[]
 ): T[] => {
@@ -57,11 +57,9 @@ const handleSingleGameFlagsDeck = (
 interface FlagsDeckStore {
   gameDeal: number[];
   clickedFlag: number;
-  click: boolean;
   quizFlag: number;
   quizFlagIsReady: boolean;
 
-  setClick: () => void;
   setClickedFlag: (id: number) => void;
   setQuizFlag: () => void;
   setGameDeal: () => void;
@@ -69,12 +67,10 @@ interface FlagsDeckStore {
 
 const useFlagsDeckStore = create<FlagsDeckStore>((set) => ({
   clickedFlag: 0,
-  click: true,
   quizFlag: 0,
   gameDeal: [],
   quizFlagIsReady: false,
 
-  setClick: () => set((state) => ({ click: !state.click })),
   setClickedFlag: (id) => set({ clickedFlag: id }),
   setQuizFlag: () => {
     const quizNumber = selectRandElementsFromArray(

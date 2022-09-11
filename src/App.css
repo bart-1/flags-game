@@ -72,8 +72,9 @@ div.flag-container {
   justify-content: center;
   align-content: center;
   align-items: center;
-  row-gap: 5vh;
+  gap: 5vh;
   column-gap: 3vw;
+  font-size: large;
   /* border: 2px solid green; */
 }
 
@@ -98,7 +99,16 @@ button.btn-flag :hover {
   box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
 }
 
+div.flag-index {
+  margin-bottom: 20px;
+  color: white;
+  float: none;
+  width: 100%;
+  height: 20px;
+}
+
 div.flag-name {
+  margin-top: 20px;
   color: white;
   float: none;
   width: 100%;
@@ -181,7 +191,8 @@ div.footer > span {
 
 @media (max-width: 1000px) {
   div.flag-container {
-    flex-direction: column;
+    /* flex-direction: row; */
+    flex-wrap: wrap;
     flex-shrink: 0;
     row-gap: 2vh;
     column-gap: 1vw;
@@ -189,7 +200,7 @@ div.footer > span {
   /* div.single-flag-container {
 }  */
   div.single-flag-container {
-    flex: none;
+    flex-direction: row;
   }
 
   div.quiz > span {
@@ -198,6 +209,13 @@ div.footer > span {
   div.results > span {
     font-size: large;
   }
+    div.flag-index>span {
+ font-size: medium;
+}
+
+div.flag-name >span {
+ font-size: medium;
+}
 }
 
 @media (max-width: 500px) {
@@ -220,12 +238,20 @@ div.footer > span {
     font-size: medium;
     line-height: 1;
   }
+  div.flag-index>span {
+ font-size: small;
+}
+
+div.flag-name >span {
+ font-size: small;
+}
 }
 @media (max-width: 370px) {
   div.flag-container {
+    flex-direction: column;
     flex-wrap: nowrap;
-    row-gap: 1vh;
-    column-gap: 1vw;
+    row-gap: 0;
+    column-gap: 0;
   }
   button.flag {
     min-width: 8vh;
@@ -256,6 +282,8 @@ div.footer > span {
 
 div.winner {
   display: flex;
+  flex-direction: column;
+  gap: 2vh;
   height: 80vh;
   align-items: center;
   justify-content: center;

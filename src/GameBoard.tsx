@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react";
-import { FlagType } from "./FetchStore";
+import react from "react";
 import Flag from "./Flag";
 import useFlagsDeckStore from "./FlagsDeckStore";
-import Loading from "./Loading";
-import useStore from "./Store";
+import useInterfaceStore from "./InterfaceStore";
 
 interface GameBoardProps {
   gameDeal: number[];
 }
 
 const GameBoard = ({ gameDeal }: GameBoardProps) => {
-  const randomInteger = useStore((state) => state.randomInteger);
+  const randomInteger = useInterfaceStore((state) => state.randomInteger);
   const setClickedFlag = useFlagsDeckStore((state) => state.setClickedFlag);
-  const setClick = useFlagsDeckStore((state) => state.setClick);
+  const setClick = useInterfaceStore((state) => state.setClick);
 
-  const renderFlags = gameDeal.map((el) => (
-    <div key={el + randomInteger(1, 999999)} className="flag">
+  const renderFlags = gameDeal.map((el, index) => (
+    <div key={el + randomInteger(1, 9999)} className="flag">
       <Flag
         flag={el}
         showId={() => setClickedFlag(el)}
         click={() => setClick()}
+        index={index + 1}
       />
     </div>
   ));

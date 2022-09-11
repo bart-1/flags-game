@@ -1,10 +1,10 @@
 import react from 'react';
-import useStore from './Store';
+import useInterfaceStore from "./InterfaceStore";
 
 
 
 const Footer = () => {
-    const lang = useStore(state => state.lang);
+    const lang = useInterfaceStore(state => state.lang);
         return (
           <>
             <div className="footer">

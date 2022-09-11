@@ -1,9 +1,9 @@
 import react from "react";
-import useStore from "./Store";
+import useInterfaceStore from "./InterfaceStore";
 
 const LangNav = () => {
-  const setLang = useStore((state) => state.setLang);
-  const lang = useStore((state) => state.lang);
+  const setLang = useInterfaceStore((state) => state.setLang);
+  const lang = useInterfaceStore((state) => state.lang);
 
   return (
     <>

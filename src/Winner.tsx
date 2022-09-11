@@ -1,10 +1,25 @@
-import react from "react";
-import useStore from "./Store";
+import react, { useEffect } from "react";
+import useInterfaceStore from "./InterfaceStore";
 
 const Winner = () => {
-    const lang = useStore((state) => state.lang);
-  const setStart = useStore((state) => state.setStart);
-    
+  const lang = useInterfaceStore((state) => state.lang);
+  const reset = useInterfaceStore((state) => state.resetGame);
+  const pressedKey = useInterfaceStore((state) => state.key);
+
+  const pressedKeyCounter = useInterfaceStore(
+    (state) => state.pressedKeyCounter
+  );
+
+  useEffect(() => {
+    if (pressedKey === " ") {
+      reset();
+    }
+  }, [pressedKeyCounter]);
+
+  const handleButtonClick = () => {
+    reset()
+  };
+
   return (
     <>
       <div className="winner">
@@ -17,8 +32,20 @@ const Winner = () => {
           <div>
             <h1>You win!</h1>
           </div>
-              )}
-              <button onClick={()=> setStart(false)}> Restart</button>
+        )}
+        <div>
+          <span>
+            {lang === "pl" && `Kliknij `}
+            {lang === "en" && `Click`}
+          </span>
+          <button onClick={handleButtonClick}> Restart</button>
+        </div>
+        <div>
+          <span>
+            {lang === "pl" && `lub wciśnij przycisk SPACJA`}
+            {lang === "en" && `or press SPACE button`}
+          </span>
+        </div>
       </div>
     </>
   );

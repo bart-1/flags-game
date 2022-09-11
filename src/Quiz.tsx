@@ -2,13 +2,13 @@ import react from "react";
 import useFetchStore, { FlagType } from "./FetchStore";
 import useFlagsDeckStore from "./FlagsDeckStore";
 import ResultBoard from "./ResultBoard";
-import useStore from "./Store";
+import useInterfaceStore from "./InterfaceStore";
 
 const Quiz = () => {
   const quizFlagNumber = useFlagsDeckStore((state) => state.quizFlag);
 
   const flags = useFetchStore((state) => state.flagsArray);
-  const lang = useStore((state) => state.lang);
+  const lang = useInterfaceStore((state) => state.lang);
 
   const pluralVerb = [
     "ae",

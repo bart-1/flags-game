@@ -1,5 +1,7 @@
 import create from "zustand";
-import useFlagsDeckStore from "./FlagsDeckStore";
+import useFlagsDeckStore, {
+  selectRandElementsFromArray,
+} from "./FlagsDeckStore";
 
 export type FlagType = { id: number; prefix: string; pl: string; en: string };
 
@@ -33,20 +35,33 @@ export const objectArrayToNumbersArray = <T>(objectsArray: T[]): number[] => {
 interface FetchStore {
   flagsArray: FlagType[];
   flagsIDArray: number[];
+  flagsIDProtoArray: number[];
   flagsIDArrayIsReady: boolean;
+  numberOfFlags: number;
+  setNumberOfFlags: (number: number) => void;
   setFlagsIDArrayIsReady: (bool: boolean) => void;
   fetch: (url: string) => void;
   flagsLoaded: boolean;
   setFlagsLoading: (bool: boolean) => void;
   rebuildFlagsIDDeck: () => void;
+  resetFlagsIDArray: () => void;
 }
 
 const useFetchStore = create<FetchStore>((set) => ({
   flagsArray: [],
   flagsIDArray: [],
+  flagsIDProtoArray: [],
+  numberOfFlags: 24,
   flagsIDArrayIsReady: false,
   flagsLoaded: false,
 
+  setNumberOfFlags: (number) => {
+    const newArr = selectRandElementsFromArray(
+      number,
+      useFetchStore.getState().flagsIDArray
+    );
+    set({ flagsIDArray: newArr });
+  },
   setFlagsIDArrayIsReady: (bool) => set({ flagsIDArrayIsReady: bool }),
   setFlagsLoading: (bool) => set({ flagsLoaded: bool }),
   rebuildFlagsIDDeck: () => {
@@ -73,11 +88,17 @@ const useFetchStore = create<FetchStore>((set) => ({
       .then((data) =>
         set({
           flagsIDArray: data,
+          flagsIDProtoArray: data,
           flagsIDArrayIsReady: true,
         })
       )
       .then(() => set({ flagsLoaded: true }));
   },
+  resetFlagsIDArray: () =>
+    set((state) => ({
+      flagsIDArray: state.flagsIDProtoArray,
+      flagsIDArrayIsReady: true,
+    })),
 }));
 
 export default useFetchStore;

@@ -1,11 +1,10 @@
 import react, { useEffect } from "react";
-import useFetchStore, { FlagType } from "./FetchStore";
+import useFetchStore from "./FetchStore";
 import useFlagsDeckStore from "./FlagsDeckStore";
-import Footer from "./Footer";
 import GameBoard from "./GameBoard";
 import Loading from "./Loading";
 import Quiz from "./Quiz";
-import useStore from "./Store";
+import useResultStore from "./ResultStore";
 import Winner from "./Winner";
 
 const GameSetup = () => {
@@ -13,9 +12,9 @@ const GameSetup = () => {
 
   const gameDeal = useFlagsDeckStore((state) => state.gameDeal);
   const setGameDeal = useFlagsDeckStore((state) => state.setGameDeal);
-  const win = useStore((state) => state.winNumber);
-  const winner = useStore((state) => state.winner);
-  const setWinner = useStore((state) => state.setWinner);
+  const win = useResultStore((state) => state.winNumber);
+  const winner = useResultStore((state) => state.winner);
+  const setWinner = useResultStore((state) => state.setWinner);
   const flagsIDArray = useFetchStore((state) => state.flagsIDArray);
   const flagsIDArrayIsReady = useFetchStore(
     (state) => state.flagsIDArrayIsReady
@@ -32,23 +31,20 @@ const GameSetup = () => {
   useEffect(() => {
     if (flagsIDArrayIsReady && flagsIDArray.length > 0) {
       setQuizFlagNumber();
-      if (flagsIDArray.length > 1) setGameDeal();
-      else {
+      if (flagsIDArray.length > 1) {
+        setGameDeal();
+      } else {
         setWinner(true);
       }
     }
   }, [win]);
 
   if (!quizFlagIsReady) return <Loading />;
+  if (winner) return <Winner />;
   return (
     <>
-      {!winner && (
-        <>
-          <GameBoard gameDeal={gameDeal} />
-          <Quiz />
-        </>
-      )}
-      {winner && <Winner />}
+      <GameBoard gameDeal={gameDeal} />
+      <Quiz />
     </>
   );
 };
