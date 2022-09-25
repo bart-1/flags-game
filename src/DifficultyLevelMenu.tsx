@@ -16,7 +16,9 @@ const DifficultyLevelMenu = ({ readyToStart }: DifficultyLevelMenuProps) => {
 
   const key = useInterfaceStore((state) => state.key);
   const pressedKey = useInterfaceStore((state) => state.pressedKey);
-  const resetPressedKeyConter = useInterfaceStore((state) => state.resetPressedKeyCounter);
+  const resetPressedKeyConter = useInterfaceStore(
+    (state) => state.resetPressedKeyCounter
+  );
 
   useEffect(() => {
     switch (true) {
@@ -35,7 +37,6 @@ const DifficultyLevelMenu = ({ readyToStart }: DifficultyLevelMenuProps) => {
         break;
     }
     resetPressedKeyConter();
-
   }, [pressedKey]);
 
   const handleRadioButtons = (e: FormEvent<HTMLFormElement>) => {
@@ -45,20 +46,19 @@ const DifficultyLevelMenu = ({ readyToStart }: DifficultyLevelMenuProps) => {
   };
   return (
     <>
-      <div>
-        <form
-          onSubmit={(e: FormEvent<HTMLFormElement>) => handleRadioButtons(e)}>
+      <form onSubmit={(e: FormEvent<HTMLFormElement>) => handleRadioButtons(e)}>
+        <div className="difficulty-menu">
           <fieldset>
             <label htmlFor="24">
               1
               <input
                 type="radio"
                 name="1"
-                value={4}
+                value={24}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setCheckedInput(e.currentTarget.value)
                 }
-                checked={checkedInput === "4"}
+                checked={checkedInput === "24"}
               />
               {lang === "pl" && `krótka gra, 24 flagi`}
               {lang === "en" && `short game, 24 flags`}
@@ -96,9 +96,9 @@ const DifficultyLevelMenu = ({ readyToStart }: DifficultyLevelMenuProps) => {
               {lang === "en" && `all 256 flags`}
             </label>
           </fieldset>
-          <button type="submit">Start</button>
-        </form>
-      </div>
+        </div>
+        <button type="submit">Start</button>
+      </form>
     </>
   );
 };

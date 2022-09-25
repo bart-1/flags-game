@@ -9,12 +9,11 @@ interface StartMenuProps {
 
 const StartMenu = ({ start }: StartMenuProps) => {
   const lang = useInterfaceStore((state) => state.lang);
-  const resetFlagsIDArray = useFetchStore(state=> state.resetFlagsIDArray)
+  const resetFlagsIDArray = useFetchStore((state) => state.resetFlagsIDArray);
 
-  useEffect( () => {
-      
-     resetFlagsIDArray()
-  }, [] );
+  useEffect(() => {
+    resetFlagsIDArray();
+  }, []);
 
   return (
     <>
@@ -24,7 +23,7 @@ const StartMenu = ({ start }: StartMenuProps) => {
             <h1>Quiz znajomości flag</h1>
             <p>
               Odgadnij wszystkie flagi, zrób jak najmniej błędów, ucz się nowych
-              flag. Flagi możesz wskazywać kliknięciem lub wybraniem na
+              flag. <br /> Flagi możesz wskazywać kliknięciem lub wybraniem na
               klawiaturze numeru flagi [1-4].
             </p>
             <p>Jeśli jesteś gotów kliknij Start lub wciśnij SPACJĘ</p>
@@ -35,7 +34,8 @@ const StartMenu = ({ start }: StartMenuProps) => {
             <h1>Flag knowledge quiz</h1>
             <p>
               Guess all the flags, make as few mistakes as possible, learn new
-              flags. You can choose flag with mouse click or choose number key
+              flags.
+              <br /> You can choose flag with mouse click or choose number key
               on keyboard [1-4].
             </p>
             <p>If you ready click Start or press SPACE </p>
