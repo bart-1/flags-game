@@ -7,7 +7,7 @@
 .app {
   margin: auto;
   width: 100%;
-  height: 100%;
+  height: 90%;
 }
 
 .loading-icon {
@@ -155,7 +155,7 @@ div.results {
   align-content: center;
   width: 20%;
   align-self: center;
-  gap: 10px;
+  gap: 5px;
   /* border: 2px solid blue; */
 }
 div.results > span {
@@ -209,13 +209,13 @@ div.footer > span {
   div.results > span {
     font-size: large;
   }
-    div.flag-index>span {
- font-size: medium;
-}
+  div.flag-index > span {
+    font-size: medium;
+  }
 
-div.flag-name >span {
- font-size: medium;
-}
+  div.flag-name > span {
+    font-size: medium;
+  }
 }
 
 @media (max-width: 500px) {
@@ -235,16 +235,16 @@ div.flag-name >span {
     font-size: large;
   }
   div.results > span {
-    font-size: medium;
+    font-size: small;
     line-height: 1;
   }
-  div.flag-index>span {
- font-size: small;
-}
+  div.flag-index > span {
+    font-size: small;
+  }
 
-div.flag-name >span {
- font-size: small;
-}
+  div.flag-name > span {
+    font-size: small;
+  }
 }
 @media (max-width: 370px) {
   div.flag-container {
@@ -269,7 +269,7 @@ div.flag-name >span {
     font-size: large;
   }
   div.results > span {
-    font-size: small;
+    font-size: smaller;
   }
   div.quiz-container {
     height: 10vh;
@@ -288,6 +288,7 @@ div.winner {
   align-items: center;
   justify-content: center;
   font-size: xx-large;
+  line-height: 120%;
 }
 
 div.start-container {
