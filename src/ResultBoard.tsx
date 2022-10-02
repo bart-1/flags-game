@@ -2,7 +2,7 @@ import react, { useEffect } from "react";
 import useFetchStore from "./FetchStore";
 import useFlagsDeckStore from "./FlagsDeckStore";
 import useInterfaceStore from "./InterfaceStore";
-import useStore from "./ResultStore";
+import useResultStore from "./ResultStore";
 
 const ResultBoard = () => {
   const flagsIDArray = useFetchStore((state) => state.flagsIDArray);
@@ -14,13 +14,17 @@ const ResultBoard = () => {
   const key = useInterfaceStore((state) => state.key);
   const pressedKey = useInterfaceStore((state) => state.pressedKey);
   const quizFlag = useFlagsDeckStore((state) => state.quizFlag);
-  const increaseWinNumber = useStore((state) => state.increaseWinNumber);
-  const increaseLossNumber = useStore((state) => state.increaseLossNumber);
-  const win = useStore((state) => state.winNumber);
-  const loss = useStore((state) => state.lossNumber);
+  const increaseWinNumber = useResultStore((state) => state.increaseWinNumber);
+  const increaseLossNumber = useResultStore(
+    (state) => state.increaseLossNumber
+  );
+  const win = useResultStore((state) => state.winNumber);
+  const loss = useResultStore((state) => state.lossNumber);
   const clicksCounter = useInterfaceStore((state) => state.clicksCounter);
-  const pressedKeyCounter = useInterfaceStore((state) => state.pressedKeyCounter);
-  const reset = useStore((state) => state.resetResults);
+  const pressedKeyCounter = useInterfaceStore(
+    (state) => state.pressedKeyCounter
+  );
+  const reset = useResultStore((state) => state.resetResults);
   const rebuildDeck = useFetchStore((state) => state.rebuildFlagsIDDeck);
   const gameDeal = useFlagsDeckStore((state) => state.gameDeal);
 
