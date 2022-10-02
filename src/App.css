@@ -195,7 +195,7 @@ div.footer > span {
     flex-wrap: wrap;
     flex-shrink: 0;
     row-gap: 2vh;
-    column-gap: 1vw;
+    column-gap: 5vw;
   }
   /* div.single-flag-container {
 }  */
@@ -217,8 +217,17 @@ div.footer > span {
     font-size: medium;
   }
 }
+@media (max-width: 630px) {
+  div.flag-container {
+    padding: 0 10vh;
+  }
+}
 
 @media (max-width: 500px) {
+  div.flag-container {
+    column-gap: 10vw;
+    padding: 0;
+  }
   div.flag-name {
     font-size: x-small;
   }
