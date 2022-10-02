@@ -27,6 +27,7 @@ const Quiz = () => {
     "fo",
     "hm",
     "in",
+    "it",
     "hu",
     "km",
     "ky",
