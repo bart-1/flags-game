@@ -9,6 +9,9 @@ const Footer = () => {
           <>
             <div className="footer">
               <span>
+                
+                {(lang === "pl" && `Quiz Flagi 1.2.5   | `) ||
+                  (lang === "en" && `Flags Quiz 1.2.5   | `)}{" "}
                 {(lang === "pl" && "Obrazy flag pochodzą ze strony") ||
                   (lang === "en" && "Pictures of flags from")}{" "}
                 <a href="https://www.flagi-panstw.pl">

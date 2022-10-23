@@ -52,7 +52,7 @@ const GameBoard = ({ gameDeal }: GameBoardProps) => {
           <div className="win-flag">
             {lang === "pl" && <span>Zgadza się!</span>}
             {lang === "en" && <span>Correct!</span>}
-            <Flag flag={winFlagID} showId={() => ""} click={() => ""} />
+            <Flag flag={winFlagID} showId={() => ""} click={() => ""} clickable={false} />
             {lang === "pl" && <span>{flagsArray[winFlagID].pl}</span>}
             {lang === "en" && <span>{flagsArray[winFlagID].en}</span>}
           </div>

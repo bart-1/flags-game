@@ -4,6 +4,19 @@
   text-align: center;
 }
 
+button.nav {
+  color: white;
+  background-color: #242424;
+  border-color: gray;
+  border-radius: 10%;
+  padding: 3px;
+}
+button.nav:hover {
+  color: white;
+  background-color: orangered;
+  
+}
+
 .app {
   margin: auto;
   width: 100%;
@@ -42,7 +55,7 @@ div.loading-icon-container {
   }
 }
 
-.active {
+#active {
   background-color: green;
 }
 
@@ -85,21 +98,25 @@ div.win-flag-container {
   background-color: #242424;
   top: 5vh;
   padding: 20px;
-  height: 100%;
+  height: 90vh;
   width: 100%;
-  margin: auto;
 }
 
 div.win-flag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: fit-content;
-  height: fit-content;
-  margin: 20vh auto;
+  margin: 15vh auto;
+  align-items: center;
+  justify-content: center;
+  line-height: 120%;
 }
 
 div.win-flag > span {
   font-size: xx-large;
   color: rgb(225, 255, 0);
- 
+  text-align: center;
 }
 
 
@@ -107,7 +124,7 @@ div.win-flag > span {
   align-self: center;
 } */
 
-button.btn-flag {
+button.btn-flag, div.btn-flag {
   width: 15vw;
   min-width: 15vh;
   background: none;
@@ -116,6 +133,7 @@ button.btn-flag {
   -moz-box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
   box-shadow: 8px 8px 24px 0px rgb(0, 0, 0);
 }
+
 
 button.btn-flag :hover {
   scale: 110%;
@@ -201,6 +219,7 @@ span.blue {
 
 div.footer {
   position: fixed;
+  z-index: 20;
   bottom: 0;
   left: 0;
   width: 100%;

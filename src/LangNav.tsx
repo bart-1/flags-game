@@ -12,12 +12,14 @@ const LangNav = () => {
         {lang === "en" && <span>{`Language: `}</span>}
         <div className="lang-nav-btn">
           <button
-            className={lang === "pl" ? "active" : ""}
+            className={`nav`}
+            id={lang === "pl" ? "active" : ""}
             onClick={() => setLang("pl")}>
             Polski
           </button>
           <button
-            className={lang === "en" ? "active" : ""}
+            id={lang === "en" ? "active" : ""}
+            className={`nav`}
             onClick={() => setLang("en")}>
             English
           </button>

@@ -8,9 +8,10 @@ interface FlagProps {
   showId: (id: number) => void;
   click: () => void;
   index?: number;
+  clickable?:boolean
 }
 
-const Flag = ({ flag, showId, click, index }: FlagProps) => {
+const Flag = ({ flag, showId, click, index, clickable = true }: FlagProps) => {
   const lang = useInterfaceStore((state) => state.lang);
   const increaseClicksCounter = useInterfaceStore(
     (state) => state.increaseClickCounter
@@ -40,10 +41,17 @@ const Flag = ({ flag, showId, click, index }: FlagProps) => {
   return (
     <>
       <div className="single-flag-container">
-        <div className="flag-index"><span >{index}</span></div>
-        <button className="btn-flag" onClick={() => handleClick()}>
-          <img src={`flags-svg/${flagsArray[flag].prefix}.svg`} alt="" />
-        </button>
+        <div className="flag-index">
+          <span>{index}</span>
+        </div>
+        {clickable ? (
+          <button className="btn-flag" onClick={() => handleClick()}>
+            <img src={`flags-svg/${flagsArray[flag].prefix}.svg`} alt="" />
+          </button>
+        ) : (
+          <div className="btn-flag"><img src={`flags-svg/${flagsArray[flag].prefix}.svg`} alt="" /></div>
+        )}
+       
         <div className="flag-name">
           <span>
             {showDescription &&

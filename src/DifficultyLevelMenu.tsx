@@ -97,7 +97,7 @@ const DifficultyLevelMenu = ({ readyToStart }: DifficultyLevelMenuProps) => {
             </label>
           </fieldset>
         </div>
-        <button type="submit">Start</button>
+        <button type="submit" className={'nav'}>Start</button>
       </form>
     </>
   );
