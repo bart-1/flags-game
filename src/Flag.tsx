@@ -7,7 +7,7 @@ interface FlagProps {
   flag: number;
   showId: (id: number) => void;
   click: () => void;
-  index: number;
+  index?: number;
 }
 
 const Flag = ({ flag, showId, click, index }: FlagProps) => {

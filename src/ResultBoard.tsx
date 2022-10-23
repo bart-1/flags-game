@@ -19,6 +19,8 @@ const ResultBoard = () => {
     (state) => state.increaseLossNumber
   );
   const win = useResultStore((state) => state.winNumber);
+  const setIsWin = useResultStore((state) => state.setIsWin);
+  const setWinFlagID = useResultStore((state) => state.setWinFlagID);
   const loss = useResultStore((state) => state.lossNumber);
   const clicksCounter = useInterfaceStore((state) => state.clicksCounter);
   const pressedKeyCounter = useInterfaceStore(
@@ -34,18 +36,23 @@ const ResultBoard = () => {
     reset();
   }, []);
 
+  
+
   useEffect(() => {
     if (clickedFlag === quizFlag && clicksCounter > 0) {
       increaseWinNumber();
+      setWinFlagID(clickedFlag)
+      setIsWin(true);
       flagsIDArrayIsReady(false);
       rebuildDeck();
     } else if (clickedFlag !== quizFlag && clicksCounter > 0)
-      increaseLossNumber();
+    increaseLossNumber();
   }, [click]);
-
+  
   useEffect(() => {
     if (gameDeal[Number(key) - 1] === quizFlag && pressedKeyCounter > 0) {
       increaseWinNumber();
+      setIsWin(true);
       flagsIDArrayIsReady(false);
       rebuildDeck();
     } else if (gameDeal[Number(key) - 1] !== quizFlag && pressedKeyCounter > 0)
