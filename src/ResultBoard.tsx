@@ -50,6 +50,7 @@ const ResultBoard = () => {
   useEffect(() => {
     if (gameDeal[Number(key) - 1] === quizFlag && pressedKeyCounter > 0) {
       increaseWinNumber();
+      
       setWinFlagID(gameDeal[Number(key) - 1]);
       setIsWin(true);
       flagsIDArrayIsReady(false);
