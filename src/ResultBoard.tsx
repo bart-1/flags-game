@@ -52,6 +52,7 @@ const ResultBoard = () => {
       increaseWinNumber();
 <<<<<<< HEAD
       setWinFlagID(gameDeal[Number(key) - 1]);
+      
 =======
       setWinFlagID(clickedFlag);
 >>>>>>> 0f36d7f84acd2cfce4a4f5946a8d094033351b44
