@@ -36,22 +36,21 @@ const ResultBoard = () => {
     reset();
   }, []);
 
-  
-
   useEffect(() => {
     if (clickedFlag === quizFlag && clicksCounter > 0) {
       increaseWinNumber();
-      setWinFlagID(clickedFlag)
+      setWinFlagID(clickedFlag);
       setIsWin(true);
       flagsIDArrayIsReady(false);
       rebuildDeck();
     } else if (clickedFlag !== quizFlag && clicksCounter > 0)
-    increaseLossNumber();
+      increaseLossNumber();
   }, [click]);
-  
+
   useEffect(() => {
     if (gameDeal[Number(key) - 1] === quizFlag && pressedKeyCounter > 0) {
       increaseWinNumber();
+      setWinFlagID(clickedFlag);
       setIsWin(true);
       flagsIDArrayIsReady(false);
       rebuildDeck();
