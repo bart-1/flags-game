@@ -58,7 +58,7 @@ const GameBoard = ({ gameDeal }: GameBoardProps) => {
           </div>
         </div>
       )}
-      <div className="flag-container">{renderFlags}</div>
+     { !win && <div className="flag-container">{renderFlags}</div>}
     </>
   );
 };

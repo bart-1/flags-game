@@ -1,0 +1,12 @@
+{
+  "folders": [
+	{
+		"path": "flags-game"
+	}
+],
+  "settings": {
+    "workbench.settings.useSplitJSON": true,
+    "liveServer.settings.multiRootWorkspaceName": "restApi",
+    "liveServer.settings.port": 8001
+  }
+}
